@@ -1,7 +1,7 @@
 version: "3.3" 
 
 services:
-  weechat:
+  app:
     image: jkaberg/weechat
     restart: always
     stdin_open: true
@@ -9,16 +9,16 @@ services:
     ports:
       - "113:113"
     volumes:
-      - weechat:/weechat
+      - data:/weechat
     environment:
       - 'GID=1000'
       - 'UID=100'
 
   identd:
     image: egoexpress/nullidentd
-    network_mode: "service:weechat" 
+    network_mode: "service:app"
     environment:
       - IDENT_USER=unknown
 
 volumes:
-  weechat:
+  data:
