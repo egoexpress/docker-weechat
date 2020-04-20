@@ -17,8 +17,6 @@ services:
   identd:
     image: egoexpress/nullidentd
     network_mode: "service:app"
-    environment:
-      - IDENT_USER=unknown
 
 volumes:
   data:
